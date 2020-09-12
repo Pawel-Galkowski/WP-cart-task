@@ -1,11 +1,10 @@
-import axios from "axios";
 import { setAlert } from "./alert";
 import { API_ERROR, DATA_TAKKEN } from "./types";
+import { request, gql } from 'graphql-request'
 
 export const getData = () => async (dispatch) => {
-  const data = JSON.stringify({
-    query: `
-    {
+  const GET_DATA = gql`
+  {
     allStarships(first:100){
       starships{
         name,
@@ -14,27 +13,17 @@ export const getData = () => async (dispatch) => {
         costInCredits
       }
     }
-  }`,
-    variables: {},
-  });
+  }`;
 
-  const config = {
-    url: "https://swapi.apis.guru/",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    data: data,
-  };
   try {
-    const res = await axios.get(config);
-
-    dispatch({
-      type: DATA_TAKKEN,
-      payload: res.data,
+    request("https://swapi.apis.guru/", GET_DATA).then(data => {
+      dispatch({
+        type: DATA_TAKKEN,
+        payload: data,
+      });
     });
-
-    dispatch(setAlert("Message send", "success"));
   } catch (err) {
+    console.log(err);
     dispatch({
       type: API_ERROR,
       payload: { msg: err.statusText, status: err.status },
