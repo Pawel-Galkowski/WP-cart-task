@@ -1,4 +1,4 @@
-﻿# WP--cart-task
+﻿# WP-cart-task
 
 Application which are showing how you can use mailling in node.js.
 Front-end of appliacation is created in react-redux.

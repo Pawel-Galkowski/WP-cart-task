@@ -1,14 +1,19 @@
-import React from "react";
+import React, {useEffect} from "react";
 import PropTypes from "prop-types";
 import Item from "./Item";
+import { getData } from "../../actions/apis";
+import { connect } from "react-redux";
 
-const Shop = (props) => {
-const items = [1,2,3,4,5];
+const Shop = (getData) => {
+  useEffect(() => {
+    getData();
+  }, [getData]);
+  const items = [1, 2, 3, 4, 5];
   const card = {
     price: 5,
     manufacturer: "Poli",
     name: "Zabawka",
-    img: "https://www.layoutit.com/img/sports-q-c-140-140-3.jpg"
+    img: "https://www.layoutit.com/img/sports-q-c-140-140-3.jpg",
   };
 
   let itemList = items.map((item) => {
@@ -25,6 +30,8 @@ const items = [1,2,3,4,5];
   );
 };
 
-Shop.propTypes = {};
+Shop.propTypes = {
+  getData: PropTypes.func.isRequired,
+};
 
-export default Shop;
+export default connect(null, { getData })(Shop);

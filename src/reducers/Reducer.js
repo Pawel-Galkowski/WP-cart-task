@@ -1,6 +1,6 @@
 import {
-  FORM_ERROR,
-  FORM_SEND,
+  API_ERROR,
+  DATA_TAKKEN,
 } from "../actions/types";
 
 const initialState = {
@@ -14,13 +14,13 @@ export default function (state = initialState, action) {
   const { payload, type } = action;
 
   switch (type) {
-    case FORM_ERROR:
+    case API_ERROR:
       return {
         ...state,
         error: payload,
         loading: false,
       };
-    case FORM_SEND:
+    case DATA_TAKKEN:
       return {
         ...state,
         forms: payload,
