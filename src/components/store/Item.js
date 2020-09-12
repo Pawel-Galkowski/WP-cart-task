@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 function Item({ card }) {
   var [state, setstate] = useState();
 
-  const {price, manufacturer, name, img} = card;
+  const { price, manufacturer, name, img } = card;
 
   useEffect(() => {
     setstate(0);
@@ -16,7 +16,9 @@ function Item({ card }) {
   };
 
   const decrement = () => {
-    setstate(--state);
+    if (state > 0) {
+      setstate(--state);
+    }
   };
 
   return (
