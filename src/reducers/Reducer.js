@@ -4,8 +4,8 @@ import {
 } from "../actions/types";
 
 const initialState = {
-  forms: [],
-  form: null,
+  starships: [],
+  starship: null,
   loading: true,
   error: {},
 };
@@ -23,7 +23,7 @@ export default function (state = initialState, action) {
     case DATA_TAKKEN:
       return {
         ...state,
-        forms: payload,
+        starships: payload,
         loading: false,
       };
     default:
