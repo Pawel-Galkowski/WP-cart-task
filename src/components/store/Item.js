@@ -31,7 +31,7 @@ function Item({ card }) {
             <div>
               <h6 className="mb-3">Manufacturers:</h6>
               {manufacturers
-                ? manufacturers.map((manufacturer) => <p className="line-1">{manufacturer + ","}</p>)
+                ? manufacturers.map((manufacturer) => <p className="line-1 mb-1">{manufacturer + "."}</p>)
                 : null}
             </div>
             <span>
