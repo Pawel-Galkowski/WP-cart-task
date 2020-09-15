@@ -33,7 +33,7 @@ body {
   margin: 0;
 }
 
-.row {
+.grid-template {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: 1fr;

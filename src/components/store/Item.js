@@ -22,6 +22,8 @@ function Item({ card }) {
     }
   };
 
+  let count = 0;
+
   return (
     <div className="grid1 text-center mt-1 mb-1 p-4">
       <div className="card d-flex justify-content-between">
@@ -31,7 +33,11 @@ function Item({ card }) {
             <div>
               <h6 className="mb-3">Manufacturers:</h6>
               {manufacturers
-                ? manufacturers.map((manufacturer) => <p className="line-1 mb-1">{manufacturer + "."}</p>)
+                ? manufacturers.map((manufacturer) => (
+                    <p key={++count} className="line-1 mb-1">
+                      {manufacturer + "."}
+                    </p>
+                  ))
                 : null}
             </div>
             <span>

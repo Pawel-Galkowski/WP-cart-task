@@ -17,7 +17,7 @@ const Shop = ({ getData, shop: { starships, loading } }) => {
       <div className="col-md-12 pt-4 pb-4">
         <h1>Products</h1>
       </div>
-      <div className="row">
+      <div className="grid-template">
         {starships.map((ship) => 
           <Item key={ship.id} card={ship} />
         )}

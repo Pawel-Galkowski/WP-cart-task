@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaShoppingCart } from "react-icons/fa";
+import BasketData from "./../basket/BasketData"
 
 const Navigation = () => {
   return (
@@ -14,24 +14,17 @@ const Navigation = () => {
         <span className="navbar-toggler-icon"></span>
       </button>{" "}
       <Link className="navbar-brand" to="/">
-        ITGalkowski
+        <strong>ITGalkowski</strong>
       </Link>
       <div
         className="collapse navbar-collapse"
         id="bs-example-navbar-collapse-1"
       >
-        <ul className="navbar-nav">
-          <li className="nav-item">
-            <Link className="nav-link" to="/shop">
-              Shop
-            </Link>
-          </li>
-        </ul>
         <ul className="navbar-nav ml-md-auto">
           <li className="nav-item">
             <Link className="nav-link active" to="/cart">
               <span>
-                <FaShoppingCart />
+                <BasketData/>
               </span>
             </Link>
           </li>

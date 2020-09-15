@@ -1,4 +1,3 @@
-import { setAlert } from "./alert";
 import { API_ERROR, DATA_TAKKEN } from "./types";
 import { GraphQLClient, gql } from "graphql-request";
 
