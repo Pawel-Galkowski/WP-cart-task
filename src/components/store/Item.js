@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
 
 function Item({ card }) {
   var [state, setstate] = useState();
 
-  const { price, manufacturer, name } = card;
+  const { costInCredits, manufacturers, name } = card;
 
   useEffect(() => {
     setstate(0);
   }, []);
 
   const increment = () => {
-    setstate(++state);
+    if (costInCredits) {
+      setstate(++state);
+    }
   };
 
   const decrement = () => {
@@ -22,21 +23,49 @@ function Item({ card }) {
   };
 
   return (
-    <div className="text-center border border-secondary mt-1 mb-1 p-4">
-      <div className="card">
-        <h5 className="card-title">{name}</h5>
-        <div className="card-content">
-          <p>{manufacturer}</p>
-          <p>
-            <b>Price: {price}$</b>
-          </p>
+    <div className="grid1 text-center mt-1 mb-1 p-4">
+      <div className="card d-flex justify-content-between">
+        <div className="h-100">
+          <h5 className="card-header">{name}</h5>
+          <div className="card-body d-flex h-75 justify-content-between flex-column">
+            <div>
+              <h6 className="mb-3">Manufacturers:</h6>
+              {manufacturers
+                ? manufacturers.map((manufacturer) => <p className="line-1">{manufacturer + ","}</p>)
+                : null}
+            </div>
+            <span>
+              <b>
+                {costInCredits
+                  ? "Price: " + costInCredits + " credits"
+                  : "unavailable"}
+              </b>
+            </span>
+          </div>
         </div>
-        <div>
-          <input type="button" value="+" onClick={increment} />
-          <span>Value: {state}</span>
-          <input type="button" value="-" onClick={decrement} />
+        <div className="card-footer">
+          <div className="value-statement">
+            <input
+              className="btn btn-outline-primary"
+              type="button"
+              value="-"
+              onClick={decrement}
+            />
+            <span>Amount: {state}</span>
+            <input
+              className="btn btn-outline-primary"
+              type="button"
+              value="+"
+              onClick={increment}
+            />
+          </div>
+          <input
+            className="m-2 btn btn-success"
+            type="submit"
+            value="Add to cart"
+            disabled={!costInCredits}
+          />
         </div>
-        <input type="submit" value="Add to cart" />
       </div>
     </div>
   );

@@ -9,57 +9,50 @@ body {
   text-align: center;
 }
 
-.box {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-}
-
-.material-icons {
-  font-size: 2.4em;
-  cursor: pointer;
-}
-
-.card {
-  width: 300px;
-}
-
-.card .card-image .card-title {
-  color: black;
-  font-weight: 400;
-}
-
 .cart {
   margin-top: 40px;
-}
-
-.collection .collection-item {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.collection-item.avatar .title {
-  font-size: 20px;
-  font-weight: 500;
-  color: #ee6e73;
-  display: block;
-  margin-bottom: 20px;
-}
-
-.collection .collection-item img {
-  width: 150px;
-  margin-right: 25px;
 }
 
 .item-desc {
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
+}
+
+.value-statement {
+  margin: 2px 0;
+}
+
+.value-statement input {
+  margin: 0 5px;
+}
+
+.line-1 {
+  line-height: 1em;
+}
+
+.card {
+  height: 100%;
+  margin: 0;
+}
+
+.row {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 1fr;
+  -webkit-column-gap: 10px;
+          column-gap: 10px;
+  row-gap: 15px;
+}
+
+.row .grid1 {
+  max-width: 400px;
+  width: 350px;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 /*# sourceMappingURL=App.css.map */
