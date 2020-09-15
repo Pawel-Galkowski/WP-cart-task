@@ -5,7 +5,6 @@ import {
 
 const initialState = {
   starships: [],
-  starship: null,
   loading: true,
   error: {},
 };

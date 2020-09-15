@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 function Item({ card }) {
   var [state, setstate] = useState();
 
-  const { price, manufacturer, name, img } = card;
+  const { price, manufacturer, name } = card;
 
   useEffect(() => {
     setstate(0);
@@ -24,10 +24,7 @@ function Item({ card }) {
   return (
     <div className="text-center border border-secondary mt-1 mb-1 p-4">
       <div className="card">
-        <div className="card-image">
-          <img src={img} alt={name} className="img-thumbnail" />
-        </div>
-        <span className="card-title">{name}</span>
+        <h5 className="card-title">{name}</h5>
         <div className="card-content">
           <p>{manufacturer}</p>
           <p>
@@ -49,4 +46,4 @@ Item.propTypes = {
   card: PropTypes.object.isRequired,
 };
 
-export default connect(null)(Item);
+export default Item;
