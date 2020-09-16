@@ -6,9 +6,12 @@ import { getData } from "./../../actions/apis";
 import Spinner from "../layout/Spinner";
 
 const Shop = ({ getData, shop: { starships, loading } }) => {
+
+  /* eslint-disable */
   useEffect(() => {
     getData();
   }, [getData]);
+  /* eslint-enable */
 
   return loading ? (
     <Spinner />
@@ -18,9 +21,9 @@ const Shop = ({ getData, shop: { starships, loading } }) => {
         <h1>Products</h1>
       </div>
       <div className="grid-template">
-        {starships.map((ship) => 
+        {starships.map((ship) => (
           <Item key={ship.id} card={ship} />
-        )}
+        ))}
       </div>
     </div>
   );

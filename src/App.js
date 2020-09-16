@@ -11,7 +11,7 @@ import Shop from "./components/store/Shop";
 import Routes from "./components/routing/Routes";
 
 //store
-import { MyBasketDataProvider } from "./components/basket/dataProvider";
+import { MyBasketDataProvider } from './components/basket/MyBasketDataProvider';
 import { BasketProvider } from "react-basket";
 
 //Stylesheets

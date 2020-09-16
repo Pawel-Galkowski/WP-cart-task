@@ -1,24 +1,36 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { withBasketData } from "../basket/Basket-context";
+import { BasketData } from "../basket/basket-data";
 
-function Item({ card }) {
-  var [state, setstate] = useState();
-
-  const { costInCredits, manufacturers, name } = card;
+const Item = ({ card, BasketData }) => {
+  var [state, setstate] = useState({
+    products: [],
+    counter: 0,
+  });
+  const { id, costInCredits, manufacturers, name } = card;
 
   useEffect(() => {
-    setstate(0);
+    setstate({ ...state, counter: 0 });
   }, []);
 
+  const submitButton = (data) => {
+    let number = state.counter;
+    if (number > 0) {
+      setstate({ ...state, products: { data, number }});
+    }
+  };
+  
   const increment = () => {
     if (costInCredits) {
-      setstate(++state);
+      setstate({ ...state, counter: ++state.counter });
     }
   };
 
   const decrement = () => {
-    if (state > 0) {
-      setstate(--state);
+    if (state.counter > 0) {
+      setstate({ ...state, counter: --state.counter });
     }
   };
 
@@ -57,7 +69,7 @@ function Item({ card }) {
               value="-"
               onClick={decrement}
             />
-            <span>Amount: {state}</span>
+            <span>Amount: {state.counter}</span>
             <input
               className="btn btn-outline-primary"
               type="button"
@@ -70,15 +82,22 @@ function Item({ card }) {
             type="submit"
             value="Add to cart"
             disabled={!costInCredits}
+            onClick={() => {
+              submitButton(id);
+            }}
           />
         </div>
       </div>
     </div>
   );
-}
+};
 
 Item.propTypes = {
   card: PropTypes.object.isRequired,
 };
 
-export default Item;
+// const mapStateToProps = (state) =>{
+//   basketData: state.basketData
+// }
+
+export default connect(null, { BasketData })(withBasketData(Item));
