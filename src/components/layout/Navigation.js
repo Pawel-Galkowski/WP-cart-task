@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import BasketData from "../basket/BasketIcon"
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 
-const Navigation = () => {
+const Navigation = ({ shop: { basket } }) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary pl-3 pr3">
       <button
@@ -22,9 +24,12 @@ const Navigation = () => {
       >
         <ul className="navbar-nav ml-md-auto">
           <li className="nav-item">
-            <Link className="nav-link active" to="/cart">
+            <Link className="nav-link active basket" to="/cart">
               <span>
-                <BasketData/>
+                <ShoppingCartIcon />
+                <span className="cart-basket d-flex align-items-center justify-content-center">
+                  {basket.length >= 0 ? basket.length : "0"}
+                </span>
               </span>
             </Link>
           </li>
@@ -34,4 +39,12 @@ const Navigation = () => {
   );
 };
 
-export default Navigation;
+Navigation.propTypes = {
+  shop: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  shop: state.shop,
+});
+
+export default connect(mapStateToProps, {})(Navigation);

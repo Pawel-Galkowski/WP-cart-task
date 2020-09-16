@@ -1,27 +1,36 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { withBasketData } from "../basket/Basket-context";
-import { BasketData } from "../basket/basket-data";
+import { basketUpdate } from "../../actions/storeBasket";
 
-const Item = ({ card, BasketData }) => {
+const Item = ({ card, shop: { basket }, basketUpdate }) => {
   var [state, setstate] = useState({
-    products: [],
+    product: "",
     counter: 0,
   });
   const { id, costInCredits, manufacturers, name } = card;
-
+  /* eslint-disable */
   useEffect(() => {
-    setstate({ ...state, counter: 0 });
+    setstate({ ...state });
   }, []);
+  /* eslint-enable */
 
-  const submitButton = (data) => {
+  const updateStore = () => {
+    if (state.product.length > 0) {
+      const { product, counter } = state;
+      const elem = { product, name, costInCredits, counter };
+      basketUpdate(basket, elem);
+    }
+    console.log(state);
+  };
+
+  const submitButton = (itemId) => {
     let number = state.counter;
     if (number > 0) {
-      setstate({ ...state, products: { data, number }});
+      setstate({ ...state, product: itemId });
     }
   };
-  
+
   const increment = () => {
     if (costInCredits) {
       setstate({ ...state, counter: ++state.counter });
@@ -84,6 +93,7 @@ const Item = ({ card, BasketData }) => {
             disabled={!costInCredits}
             onClick={() => {
               submitButton(id);
+              updateStore();
             }}
           />
         </div>
@@ -94,10 +104,12 @@ const Item = ({ card, BasketData }) => {
 
 Item.propTypes = {
   card: PropTypes.object.isRequired,
+  basketUpdate: PropTypes.func.isRequired,
+  shop: PropTypes.object.isRequired,
 };
 
-// const mapStateToProps = (state) =>{
-//   basketData: state.basketData
-// }
+const mapStateToProps = (state) => ({
+  shop: state.shop,
+});
 
-export default connect(null, { BasketData })(withBasketData(Item));
+export default connect(mapStateToProps, { basketUpdate })(Item);

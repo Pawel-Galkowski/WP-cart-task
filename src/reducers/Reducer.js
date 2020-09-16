@@ -1,8 +1,8 @@
 import {
   API_ERROR,
   DATA_TAKKEN,
-  ADDED_TO_BASKET,
-  BASKET_ERROR
+  BASKET_UPDATE,
+  BASKET_ERROR,
 } from "../actions/types";
 
 const initialState = {
@@ -29,12 +29,12 @@ export default function (state = initialState, action) {
         starships: payload,
         loading: false,
       };
-      case ADDED_TO_BASKET:
-        return{
-          ...state,
-          basket: payload,
-          loading:false
-        }
+    case BASKET_UPDATE:
+      return {
+        ...state,
+        basket: payload,
+        loading: false,
+      };
     default:
       return state;
   }

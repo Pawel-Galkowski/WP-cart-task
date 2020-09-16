@@ -2,11 +2,10 @@ import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import Item from "./Item";
 import { connect } from "react-redux";
-import { getData } from "./../../actions/apis";
+import { getData } from "../../actions/apis";
 import Spinner from "../layout/Spinner";
 
 const Shop = ({ getData, shop: { starships, loading } }) => {
-
   /* eslint-disable */
   useEffect(() => {
     getData();

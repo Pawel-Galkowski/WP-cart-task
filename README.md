@@ -4,8 +4,6 @@ Application which are showing how you can use mailling in node.js.
 Front-end of appliacation is created in react-redux.
 
 ## Technology stack
-    - Node.Js
-    - Express.JS
     - JavaScript
     - React
     - Redux

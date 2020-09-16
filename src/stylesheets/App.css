@@ -55,4 +55,21 @@ body {
       -ms-flex-align: center;
           align-items: center;
 }
+
+ul li a.basket {
+  position: relative;
+}
+
+ul li a.basket .cart-basket {
+  font-size: .6rem;
+  position: absolute;
+  top: -2px;
+  right: -3px;
+  width: 15px;
+  height: 15px;
+  color: #fff;
+  background-color: red;
+  border-radius: 50%;
+  text-align: center;
+}
 /*# sourceMappingURL=App.css.map */
