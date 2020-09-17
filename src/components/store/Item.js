@@ -4,24 +4,43 @@ import { connect } from "react-redux";
 import { basketUpdate } from "../../actions/storeBasket";
 
 const Item = ({ card, shop: { basket }, basketUpdate }) => {
-  var [state, setstate] = useState({
-    product: "",
-    counter: 0,
-  });
+  var [state, setstate] = useState(
+    {
+      product: "",
+      counter: 0,
+    },
+    () => {
+      setstate({ ...state });
+    }
+  );
   const { id, costInCredits, manufacturers, name } = card;
   /* eslint-disable */
   useEffect(() => {
     setstate({ ...state });
   }, []);
+
+  const checkElements = (elem) => {
+    let counterUpdate = elem.counter;
+    let removeItem = -1;
+    basket.map((item, index) => {
+      if (item.id === id) {
+        counterUpdate += item.counter;
+        removeItem = index;
+      }
+    });
+    if (removeItem >= 0) basket.splice(removeItem, 1);
+    elem.counter = counterUpdate;
+    basketUpdate(basket, elem);
+    setstate({...state, counter: 0})
+  };
   /* eslint-enable */
 
   const updateStore = () => {
     if (state.product.length > 0) {
       const { product, counter } = state;
-      const elem = { product, name, costInCredits, counter };
-      basketUpdate(basket, elem);
+      const elem = { id, product, name, costInCredits, counter };
+      checkElements(elem);
     }
-    console.log(state);
   };
 
   const submitButton = (itemId) => {

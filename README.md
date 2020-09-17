@@ -1,13 +1,12 @@
 ﻿# WP-cart-task
 
-Application which are showing how you can use mailling in node.js.
-Front-end of appliacation is created in react-redux.
+Application which are showing how to create simple store.
 
 ## Technology stack
     - JavaScript
     - React
     - Redux
-    - HTML5
+    - Bootstrap 4
     - SASS
 
 ## Installation

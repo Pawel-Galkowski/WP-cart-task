@@ -24,11 +24,11 @@ body {
   }
 }
 
-.line-1{
+.line-1 {
   line-height: 1.1em;
 }
 
-.card{
+.card {
   height: 100%;
   margin: 0;
 }
@@ -40,7 +40,7 @@ body {
   column-gap: 10px;
   row-gap: 15px;
 
-  .grid1{
+  .grid1 {
     max-width: 400px;
     width: 350px;
     justify-items: center;
@@ -48,12 +48,12 @@ body {
   }
 }
 
-ul li a.basket{
+ul li a.basket {
   position: relative;
 }
 
 ul li a.basket .cart-basket {
-  font-size: .6rem;
+  font-size: 0.6rem;
   position: absolute;
   top: -2px;
   right: -3px;
@@ -63,4 +63,9 @@ ul li a.basket .cart-basket {
   background-color: red;
   border-radius: 50%;
   text-align: center;
+  font-weight: bold;
+}
+
+.light-style {
+  background-color: #f0f0f0;
 }
