@@ -22,6 +22,7 @@ export const basketUpdate = (list, res) => async (dispatch) => {
 
 export const basketRemove = (list, id) => async (dispatch) => {
   let removeItem = -1;
+  // eslint-disable-next-line
   list.map((item, index) => {
     if (item.id === id) {
       removeItem = index;

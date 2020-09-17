@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { basketRemove, clearBasket } from "../../actions/storeBasket";
 import Alert from "../layout/Alert";
 
-const Cart = ({ shop: { basket }, basketRemove, clearBasket }) => {
+const Cart = ({ shop: { basket }, basketRemove, clearBasket, DeleteIcon }) => {
   let fullPrice = 0;
 
   const addPrice = (el, count) => {
@@ -22,24 +22,26 @@ const Cart = ({ shop: { basket }, basketRemove, clearBasket }) => {
   };
 
   return (
-    <div className="container">
+    <div>
       <Link to="../">
         <button type="button" className="btn btn-info mt-2">
           <KeyboardBackspaceIcon /> Back to Shop
         </button>
       </Link>
-      <div className="col-md-12 pt-4 pb-4">
+      <div className="col-12 pt-4 pb-4">
         <h1>Cart</h1>
         <p>Items in cart: {basket.length ? basket.length : 0}</p>
       </div>
-      <Alert/>
-      <div className="border-bottom border-bottom-1 p-2 bg-info text-white">
+      <Alert />
+      <div className="border-block p-2 bg-info text-white d-md-block">
         <div className="row">
-          <div className="col-4">NAME</div>
-          <div className="col-2">PRICE (in credits)</div>
-          <div className="col-2">QUANITY</div>
-          <div className="col-2">REMOVE</div>
-          <div className="col-2">TOTAL</div>
+          <div className="col-4 d-none d-md-block text-center">NAME</div>
+          <div className="col-2 d-none d-md-block text-center">
+            PRICE <br /> (in credits)
+          </div>
+          <div className="col-2 d-none d-md-block text-center">QUANITY</div>
+          <div className="col-2 d-none d-md-block text-center">TOTAL</div>
+          <div className="col-2 d-none d-md-block text-center">REMOVE</div>
         </div>
       </div>
       <div className="mb-4">
@@ -47,25 +49,36 @@ const Cart = ({ shop: { basket }, basketRemove, clearBasket }) => {
           basket.map((item) => (
             <div
               key={item.product}
-              className="border-bottom border-bottom-1 light-style pb-2 pt-2 pr-4 pl-4"
+              className="border-block border-bottom border-bottom-1 light-style pb-2 pt-2 pr-2 pl-2 d-md-block"
             >
-              <div className="row">
-                <div className="col-4">{item.name}</div>
-                <div className="col-2">{item.costInCredits}</div>
-                <div className="col-2">{item.counter}</div>
-                <div className="col-2">
+              <div className="row styled-col">
+                <div className="col-4 text-center">
+                  <span className="d-block d-md-none">
+                    Name: <br />
+                  </span>
+                  {item.name}
+                </div>
+                <div className="col-2 text-center d-none d-sm-block">
+                  {item.costInCredits}
+                </div>
+                <div className="col-2 text-center">
+                  <span className="d-block d-md-none">Count:</span>
+                  {item.counter}
+                </div>
+                <div className="col-2 text-center">
+                  <span className="d-block d-md-none">Price:</span>
+                  {item.costInCredits * item.counter}
+                </div>
+                <div className="col-2 text-center">
                   <button
-                    className="btn btn-link text-center"
+                    className="btn btn-outline-primary text-center"
                     type="button"
                     onClick={() => {
                       removeItem(item.id);
                     }}
                   >
-                    Remove
+                    X
                   </button>
-                </div>
-                <div className="col-2 text-right">
-                  {item.costInCredits * item.counter}
                 </div>
                 {addPrice(item.costInCredits, item.counter)}
               </div>
@@ -79,15 +92,15 @@ const Cart = ({ shop: { basket }, basketRemove, clearBasket }) => {
       </div>
       <div className="column">
         <div className="row">
-          <div className="col-8"></div>
-          <div className="col-4 row bg-secondary text-white p-2">
-            <div className="col-4">Subtotal</div>
-            <div className="col-8 text-right">{fullPrice}</div>
+          <div className="col-4 col-md-8"></div>
+          <div className="col-8 col-md-4 row bg-secondary text-white p-2">
+            <div className="col-6 col-md-4">Subtotal</div>
+            <div className="col-6 col-md-8 text-right">{fullPrice}</div>
           </div>
         </div>
         <div className="row mt-2">
-          <div className="col-10"> </div>
-          <div className="col-2 d-flex justify-content-end">
+          <div className="col-6 col-md-10"> </div>
+          <div className="col-6 col-md-2 d-flex justify-content-end">
             <button
               className="btn btn-primary"
               type="submit"

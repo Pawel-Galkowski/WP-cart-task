@@ -5,6 +5,13 @@ body {
   overflow-x: hidden;
 }
 
+:root {
+  --breakpoint-md: 850px;
+  --breakpoint-sm: 476px;
+  --breakpoint-lg: 1200px;
+  --breakpoint-xl: 1500px;
+}
+
 .App {
   text-align: center;
 }
@@ -43,8 +50,45 @@ body {
   .grid1 {
     max-width: 400px;
     width: 350px;
+    margin: 0 auto;
     justify-items: center;
     align-items: center;
+  }
+}
+
+.custom-container {
+  max-width: 1500px;
+  width: 100%;
+  padding: 0 5%;
+  margin: 0 auto 5% auto;
+}
+
+@media screen and (max-width: 1200px) {
+  .grid-template {
+    column-count: 2;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .grid-template .grid1 {
+    width: 320px;
+  }
+}
+
+@media screen and (max-width: 710px) {
+  .grid-template {
+    column-count: 1;
+    grid-template-columns: repeat(1, 1fr);
+    .grid1 {
+      width: 350px;
+    }
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .grid-template .grid1 {
+    width: 280px;
   }
 }
 
@@ -68,4 +112,21 @@ ul li a.basket .cart-basket {
 
 .light-style {
   background-color: #f0f0f0;
+}
+
+@media screen and (max-width: 575px) {
+  .styled-col {
+    .col-4 {
+      max-width: 30%;
+      flex: 0 0 30%;
+    }
+    .col-2 {
+      max-width: 25%;
+      flex: 0 0 25%;
+      &:last-of-type {
+        max-width: 20%;
+        flex: 0 0 20%;
+      }
+    }
+  }
 }

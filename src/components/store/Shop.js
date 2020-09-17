@@ -17,8 +17,8 @@ const Shop = ({ getData, shop: { starships, loading } }) => {
   return loading ? (
     <Spinner />
   ) : (
-    <div>
-      <div className="col-md-12 pt-4 pb-4">
+    <div className="container">
+      <div className="col-12 pt-4 pb-4">
         <h1 className="mb-2">Products</h1>
         <p><Info color="error"/> When you add something to basket you will get the status alert.</p>
       </div>

@@ -5,6 +5,13 @@ body {
   overflow-x: hidden;
 }
 
+:root {
+  --breakpoint-md: 850px;
+  --breakpoint-sm: 476px;
+  --breakpoint-lg: 1200px;
+  --breakpoint-xl: 1500px;
+}
+
 .App {
   text-align: center;
 }
@@ -50,10 +57,51 @@ body {
 .grid-template .grid1 {
   max-width: 400px;
   width: 350px;
+  margin: 0 auto;
   justify-items: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.custom-container {
+  max-width: 1500px;
+  width: 100%;
+  padding: 0 5%;
+  margin: 0 auto 5% auto;
+}
+
+@media screen and (max-width: 1200px) {
+  .grid-template {
+    -webkit-column-count: 2;
+            column-count: 2;
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .grid-template .grid1 {
+    width: 320px;
+  }
+}
+
+@media screen and (max-width: 710px) {
+  .grid-template {
+    -webkit-column-count: 1;
+            column-count: 1;
+    -ms-grid-columns: (1fr)[1];
+        grid-template-columns: repeat(1, 1fr);
+  }
+  .grid-template .grid1 {
+    width: 350px;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .grid-template .grid1 {
+    width: 280px;
+  }
 }
 
 ul li a.basket {
@@ -76,5 +124,26 @@ ul li a.basket .cart-basket {
 
 .light-style {
   background-color: #f0f0f0;
+}
+
+@media screen and (max-width: 575px) {
+  .styled-col .col-4 {
+    max-width: 30%;
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 30%;
+            flex: 0 0 30%;
+  }
+  .styled-col .col-2 {
+    max-width: 25%;
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 25%;
+            flex: 0 0 25%;
+  }
+  .styled-col .col-2:last-of-type {
+    max-width: 20%;
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 20%;
+            flex: 0 0 20%;
+  }
 }
 /*# sourceMappingURL=App.css.map */

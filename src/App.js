@@ -21,12 +21,10 @@ const App = () => {
       <Router>
         <Fragment>
           <Navigation />
-          <main className="container">
             <Switch>
               <Route exact path="/" component={Shop} />
               <Route component={Routes} />
             </Switch>
-          </main>
         </Fragment>
       </Router>
     </Provider>
