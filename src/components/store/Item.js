@@ -46,7 +46,7 @@ const Item = ({ card, shop: { basket }, basketUpdate }) => {
   const submitButton = (itemId) => {
     let number = state.counter;
     if (number > 0) {
-      setstate({ ...state, product: itemId });
+      state.product=itemId;
     }
   };
 
