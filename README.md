@@ -1,6 +1,6 @@
 # WP-cart-task
 
-Application which are showing how to create simple store.
+Application which are showing how to create simple store in react.
 
 ## Technology stack
     - JavaScript
