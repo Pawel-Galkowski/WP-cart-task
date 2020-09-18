@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { basketUpdate } from "../../actions/storeBasket";
@@ -10,9 +10,6 @@ const Item = ({ card, shop: { basket }, basketUpdate }) => {
     });
   const { id, costInCredits, manufacturers, name } = card;
   /* eslint-disable */
-  useEffect(() => {
-    setstate({ ...state });
-  }, []);
 
   const checkElements = (elem) => {
     let counterUpdate = elem.counter;
