@@ -4,15 +4,10 @@ import { connect } from "react-redux";
 import { basketUpdate } from "../../actions/storeBasket";
 
 const Item = ({ card, shop: { basket }, basketUpdate }) => {
-  var [state, setstate] = useState(
-    {
+  var [state, setstate] = useState({
       product: "",
       counter: 0,
-    },
-    () => {
-      setstate({ ...state });
-    }
-  );
+    });
   const { id, costInCredits, manufacturers, name } = card;
   /* eslint-disable */
   useEffect(() => {
