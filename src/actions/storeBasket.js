@@ -1,5 +1,4 @@
 import { BASKET_UPDATE, BASKET_ERROR } from "./types";
-import { setAlert } from "./alert";
 
 export const basketUpdate = (list, res) => async (dispatch) => {
   const newList = [];
@@ -10,13 +9,11 @@ export const basketUpdate = (list, res) => async (dispatch) => {
       type: BASKET_UPDATE,
       payload: newList,
     });
-    dispatch(setAlert("Successfully added", "success"));
   } catch (err) {
     dispatch({
       type: BASKET_ERROR,
       payload: { msg: err.statusText, status: err.status },
     });
-    dispatch(setAlert("Product not added", "danger"));
   }
 };
 
@@ -34,13 +31,11 @@ export const basketRemove = (list, id) => async (dispatch) => {
       type: BASKET_UPDATE,
       payload: list,
     });
-    dispatch(setAlert("Successfully removed", "success"));
   } catch (err) {
     dispatch({
       type: BASKET_ERROR,
       payload: { msg: err.statusText, status: err.status },
     });
-    dispatch(setAlert("Product not added", "danger"));
   }
 };
 
@@ -50,12 +45,10 @@ export const clearBasket = () => async (dispatch) => {
       type: BASKET_UPDATE,
       payload: {},
     });
-    dispatch(setAlert("Transaction finished", "success"));
   } catch (err) {
     dispatch({
       type: BASKET_ERROR,
       payload: { msg: err.statusText, status: err.status },
     });
-    dispatch(setAlert("Product not added", "danger"));
   }
 };

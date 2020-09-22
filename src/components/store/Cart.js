@@ -1,16 +1,15 @@
-import * as React from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import KeyboardBackspaceIcon from "@material-ui/icons/KeyboardBackspace";
 import { Link } from "react-router-dom";
 import { basketRemove, clearBasket } from "../../actions/storeBasket";
-import Alert from "../layout/Alert";
 
-const Cart = ({ shop: { basket }, basketRemove, clearBasket, DeleteIcon }) => {
-  let fullPrice = 0;
+const Cart = ({ shop: { basket }, basketRemove, clearBasket }) => {
+  let price = 0;
 
   const addPrice = (el, count) => {
-    fullPrice += el * count;
+    price += el * count;
   };
 
   const removeItem = (item) => {
@@ -32,7 +31,6 @@ const Cart = ({ shop: { basket }, basketRemove, clearBasket, DeleteIcon }) => {
         <h1>Cart</h1>
         <p>Items in cart: {basket.length ? basket.length : 0}</p>
       </div>
-      <Alert />
       <div className="border-block p-2 bg-info text-white d-md-block">
         <div className="row">
           <div className="col-4 d-none d-md-block text-center">NAME</div>
@@ -95,7 +93,7 @@ const Cart = ({ shop: { basket }, basketRemove, clearBasket, DeleteIcon }) => {
           <div className="col-4 col-md-8"></div>
           <div className="col-8 col-md-4 row bg-secondary text-white p-2">
             <div className="col-6 col-md-4">Subtotal</div>
-            <div className="col-6 col-md-8 text-right">{fullPrice}</div>
+            <div className="col-6 col-md-8 text-right">{price}</div>
           </div>
         </div>
         <div className="row mt-2">

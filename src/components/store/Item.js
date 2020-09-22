@@ -9,12 +9,11 @@ const Item = ({ card, shop: { basket }, basketUpdate }) => {
       counter: 0,
     });
   const { id, costInCredits, manufacturers, name } = card;
-  /* eslint-disable */
 
   const checkElements = (elem) => {
     let counterUpdate = elem.counter;
     let removeItem = -1;
-    basket.map((item, index) => {
+    basket.forEach((item, index) => {
       if (item.id === id) {
         counterUpdate += item.counter;
         removeItem = index;
@@ -25,7 +24,6 @@ const Item = ({ card, shop: { basket }, basketUpdate }) => {
     basketUpdate(basket, elem);
     setstate({...state, counter: 0})
   };
-  /* eslint-enable */
 
   const updateStore = () => {
     if (state.product.length > 0) {
@@ -36,7 +34,7 @@ const Item = ({ card, shop: { basket }, basketUpdate }) => {
   };
 
   const submitButton = (itemId) => {
-    let number = state.counter;
+    const number = state.counter;
     if (number > 0) {
       state.product=itemId;
     }
@@ -54,8 +52,6 @@ const Item = ({ card, shop: { basket }, basketUpdate }) => {
     }
   };
 
-  let count = 0;
-
   return (
     <div className="grid1 text-center mt-1 mb-1 p-4">
       <div className="card d-flex justify-content-between">
@@ -65,8 +61,8 @@ const Item = ({ card, shop: { basket }, basketUpdate }) => {
             <div>
               <h6 className="mb-3">Manufacturers:</h6>
               {manufacturers
-                ? manufacturers.map((manufacturer) => (
-                    <p key={++count} className="line-1 mb-1">
+                ? manufacturers.map((manufacturer, item) => (
+                    <p key={item} className="line-1 mb-1">
                       {manufacturer + "."}
                     </p>
                   ))
