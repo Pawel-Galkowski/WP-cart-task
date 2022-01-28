@@ -29,4 +29,4 @@ npm start
 ```
 
 ## License
-[IST](https://choosealicense.com/licenses/ist/)
+[MIT](https://choosealicense.com/licenses/mit/)
